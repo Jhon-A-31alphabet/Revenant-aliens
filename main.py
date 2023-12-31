@@ -3,6 +3,7 @@ import random
 
 pygame.init()
 pygame.font.init()
+pygame.mixer.init()
 
 class Alien(pygame.sprite.Sprite):
     def __init__(self):
@@ -135,11 +136,16 @@ def next_level():
         list_of_sprites.add(enemy)
 
 def game_over(screen_):
+    pygame.mixer.music.load("game-over-arcade-6435.mp3")
+    pygame.mixer.music.play()
+
     while True:
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
+
             if event.type ==pygame.KEYDOWN:
                 if event.key ==pygame.K_a:
                     player_.rect.x = 450
@@ -163,6 +169,7 @@ def game_over(screen_):
 
 
 while not done:
+    laser_sound =pygame.mixer.Sound("blaster-2-81267.mp3")
 
     font = pygame.font.SysFont("Arial", 12, bold=True)
     score_marker = font.render(f"Score: {score}", True, (255, 255, 255))
@@ -178,6 +185,7 @@ while not done:
             if event.key == pygame.K_RIGHT:
                 player_.move(3)
             if event.key == pygame.K_SPACE:
+                laser_sound.play()
                 LAS = Laser()
                 LAS.rect.x = player_.rect.x - 8
                 LAS.rect.y = player_.rect.y - 20
