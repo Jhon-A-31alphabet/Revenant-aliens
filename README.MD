@@ -1,6 +1,6 @@
 # Space Invaders Game
 
-![Game Screenshot](screenshot_game.png)
+![Game Screenshot](game_screenshot.png)
 
 Hey there! 👋 This is my very first game project, and I'm excited to share it with you. I've created a simple Space Invaders game using Python and the Pygame library.
 
